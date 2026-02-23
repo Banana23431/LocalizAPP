@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "type": "breakfast",
+    "cuisine": "russian",
+    "name": {
+      "ru": "Сырники",
+      "en": "Syrniki",
+      "de": "Syrniki"
+    },
+    "ingredients": {
+      "ru": ["Творог", "Мука", "Яйца", "Сахар"],
+      "en": ["Cottage cheese", "Flour", "Eggs", "Sugar"],
+      "de": ["Quark", "Mehl", "Eier", "Zucker"]
+    },
+    "steps": {
+      "ru": ["Смешать ингредиенты...", "Жарить на сковороде..."],
+      "en": ["Mix ingredients...", "Fry in a pan..."],
+      "de": ["Zutaten mischen...", "In einer Pfanne braten..."]
+    },
+    "image": "syrniki.jpg"
+  },
+  {
+    "id": 2,
+    "type": "lunch",
+    "cuisine": "italian",
+    "name": {
+      "ru": "Паста",
+      "en": "Pasta",
+      "de": "Pasta"
+    },
+    "ingredients": {
+      "ru": ["Мука", "Яйца", "Соль", "Вода"],
+      "en": ["Flour", "Eggs", "Salt", "Water"],
+      "de": ["Mehl", "Eier", "Salz", "Wasser"]
+    },
+    "steps": {
+      "ru": ["Смешать ингредиенты...", "Сварить в кипящей воде..."],
+      "en": ["Mix ingredients...", "Cook in boiling water..."],
+      "de": ["Zutaten mischen...", "In kochendem Wasser kochen..."]
+    },
+    "image": "pasta.jpg"
+  },
+  {
+    "id": 3,
+    "type": "dinner",
+    "cuisine": "japanese",
+    "name": {
+      "ru": "Суши",
+      "en": "Sushi",
+      "de": "Sushi"
+    },
+    "ingredients": {
+      "ru": ["Рис", "Водоросли нори", "Рыба", "Соевый соус"],
+      "en": ["Rice", "Nori seaweed", "Fish", "Soy sauce"],
+      "de": ["Reis", "Nori-Algen", "Fisch", "Sojasauce"]
+    },
+    "steps": {
+      "ru": ["Сварить рис...", "Сформировать суши...", "Подавать с соевым соусом..."],
+      "en": ["Cook the rice...", "Form sushi...", "Serve with soy sauce..."],
+      "de": ["Reis kochen...", "Sushi formen...", "Mit Sojasauce servieren..."]
+    },
+    "image": "sushi.jpg"
+  }
+]

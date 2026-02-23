@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LocalizAPP</string>
+    <string name="selected_language">Deutsch</string>
+    <string name="welcome_message">Willkommen beim Kulinarischen Helfer</string>
+    <string name="language">Deutsch</string>
+    <string name="filter_all">Alle</string>
+    <string name="filter_breakfast">Frühstück</string>
+    <string name="filter_lunch">Mittagessen</string>
+    <string name="filter_dinner">Abendessen</string>
+</resources>

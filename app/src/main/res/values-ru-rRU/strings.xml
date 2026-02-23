@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LocalizAPP</string>
+    <string name="selected_language">Русский</string>
+    <string name="welcome_message">Добро пожаловать в Кулинарный помощник</string>
+    <string name="language">Русский</string>
+    <string name="filter_all">Все</string>
+    <string name="filter_breakfast">Завтрак</string>
+    <string name="filter_lunch">Обед</string>
+    <string name="filter_dinner">Ужин</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LocalizAPP</string>
+    <string name="selected_language">English</string>
+    <string name="welcome_message">Welcome To Culinary Helper</string>
+    <string name="language">English</string>
+    <string name="filter_all">All</string>
+    <string name="filter_breakfast">Breakfast</string>
+    <string name="filter_lunch">Lunch</string>
+    <string name="filter_dinner">Dinner</string>
+</resources>
