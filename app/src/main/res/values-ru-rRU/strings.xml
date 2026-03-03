@@ -8,4 +8,13 @@
     <string name="filter_breakfast">Завтрак</string>
     <string name="filter_lunch">Обед</string>
     <string name="filter_dinner">Ужин</string>
+    <string name="btn_back">Назад</string>
+    <string name="btn_play_audio">Пуск</string>
+    <string name="btn_pause_audio">Пауза</string>
+    <string name="btn_stop_audio">Стоп</string>
+    <string name="btn_play_video">Пуск</string>
+    <string name="btn_pause_video">Пауза</string>
+    <string name="btn_stop_video">Стоп</string>
+    <string name="textAudio">Прослушать аудио</string>
+    <string name="textVideo">Посмотреть видео</string>
 </resources>

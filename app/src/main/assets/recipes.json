@@ -14,11 +14,10 @@
       "de": ["Quark", "Mehl", "Eier", "Zucker"]
     },
     "steps": {
-      "ru": ["Смешать ингредиенты...", "Жарить на сковороде..."],
-      "en": ["Mix ingredients...", "Fry in a pan..."],
-      "de": ["Zutaten mischen...", "In einer Pfanne braten..."]
-    },
-    "image": "syrniki.jpg"
+      "ru": ["В миске разотрите творог с яйцами и сахаром.", "Влейте муку, добавьте ванильный сахар, хорошо перемешайте до однородной массы.","Ложкой сформируйте из теста небольшие лепешки."," Обжаривайте на разогретой с маслом с двух сторон до золотистого цвета."],
+      "en": ["Mix cottage cheese with eggs and sugar in a bowl.", "Pour in the flour and vanilla sugar, mix until smooth.","Using a spoon, shape small pancakes from the dough.","Cook on a preheated skillet with oil until golden brown on both sides."],
+      "de": ["Quark mit Eiern und Zucker in einer Schüssel verrühren.", "Mehl und Vanillezucker einrühren, bis der Teig glatt ist.","Mit einem Löffel kleine Kuchen aus dem Teig formen.","In einer vorgeheizten Pfanne mit Öl goldbraun braten."]
+    }
   },
   {
     "id": 2,
@@ -38,8 +37,7 @@
       "ru": ["Смешать ингредиенты...", "Сварить в кипящей воде..."],
       "en": ["Mix ingredients...", "Cook in boiling water..."],
       "de": ["Zutaten mischen...", "In kochendem Wasser kochen..."]
-    },
-    "image": "pasta.jpg"
+    }
   },
   {
     "id": 3,
@@ -59,7 +57,6 @@
       "ru": ["Сварить рис...", "Сформировать суши...", "Подавать с соевым соусом..."],
       "en": ["Cook the rice...", "Form sushi...", "Serve with soy sauce..."],
       "de": ["Reis kochen...", "Sushi formen...", "Mit Sojasauce servieren..."]
-    },
-    "image": "sushi.jpg"
+    }
   }
 ]

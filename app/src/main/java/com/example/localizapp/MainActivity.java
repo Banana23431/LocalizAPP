@@ -3,9 +3,11 @@ package com.example.localizapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import android.media.MediaPlayer;
 import com.example.localizapp.Recipe;
 import com.example.localizapp.MultilingualString;
 import com.example.localizapp.MultilingualList;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private RecipeAdapter recipeAdapter;
     private List<Recipe> recipeList;
     private RadioGroup filterGroup;
+    private MediaPlayer startSound;
     private RadioButton filterAll, filterBreakfast, filterLunch, filterDinner;
 
 
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         context = LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
         resources = context.getResources();
         setContentView(R.layout.activity_main);
+        startSound = MediaPlayer.create(this, R.raw.sound1);
+        startSound.start();
 
         messageView = (TextView) findViewById(R.id.textView);
         btnRus = findViewById(R.id.btnRus);
@@ -95,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         recipeAdapter = new RecipeAdapter(this, recipeList);
         recyclerView.setAdapter(recipeAdapter);
 
+
         filterGroup = findViewById(R.id.filter_group);
         filterAll = findViewById(R.id.filter_all);
         filterBreakfast = findViewById(R.id.filter_breakfast);
@@ -107,10 +114,22 @@ public class MainActivity extends AppCompatActivity {
                 filterRecipes(checkedId);
             }
         });
+        recipeAdapter.setOnItemClickListener(new RecipeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.d("MainActivity", "onItemClick called for position: " + position);
+                Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
+                intent.putExtra("recipe_id", recipeList.get(position).getId());
+                MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.sound2); // Используйте MainActivity.this
+                mp.start();
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(recipeAdapter);
 
-        // Изначально показываем все рецепты
         filterAll.setChecked(true);
     }
+
 
     private void filterRecipes(int checkedId) {
         List<Recipe> filteredList = new ArrayList<>();
@@ -135,34 +154,59 @@ public class MainActivity extends AppCompatActivity {
         }
 
         recipeAdapter = new RecipeAdapter(this, filteredList);
+        recipeAdapter.setOnItemClickListener(new RecipeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.d("MainActivity", "onItemClick called for position: " + position);
+                Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
+                intent.putExtra("recipe_id", filteredList.get(position).getId()); // Используйте filteredList
+                MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.sound2); // Используйте MainActivity.this
+                mp.start();
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(recipeAdapter);
     }
     private void updateLocale(String language) {
         context = LocaleHelper.setLocale(this, language);
         resources = context.getResources();
 
-        // Обновление текста для welcome_message
         messageView.setText(resources.getString(R.string.welcome_message));
 
-        // Обновление текста для фильтров
         filterAll.setText(resources.getString(R.string.filter_all));
         filterBreakfast.setText(resources.getString(R.string.filter_breakfast));
         filterLunch.setText(resources.getString(R.string.filter_lunch));
         filterDinner.setText(resources.getString(R.string.filter_dinner));
 
-        // Обновление рецептов
         recipeList = loadRecipes();
         recipeAdapter = new RecipeAdapter(this, recipeList);
         recyclerView.setAdapter(recipeAdapter);
     }
-    private List<Recipe> loadRecipes() {
+    public List<Recipe> loadRecipes() {
         Gson gson = new Gson();
         try {
             InputStream is = getAssets().open("recipes.json");
             Reader reader = new InputStreamReader(is);
             Type recipeListType = new TypeToken<List<Recipe>>(){}.getType();
             List<Recipe> recipes = gson.fromJson(reader, recipeListType);
-            return recipes;
+
+            // Преобразуем объекты List<Recipe> после десериализации
+            List<Recipe> updatedRecipes = new ArrayList<>();
+            for (Recipe recipe : recipes) {
+                Recipe.MultilingualList ingredients = new Recipe.MultilingualList(
+                        recipe.ingredients.getRu(),
+                        recipe.ingredients.getEn(),
+                        recipe.ingredients.getDe()
+                );
+                Recipe.MultilingualList steps = new Recipe.MultilingualList(
+                        recipe.steps.getRu(),
+                        recipe.steps.getEn(),
+                        recipe.steps.getDe()
+                );
+                updatedRecipes.add(new Recipe(recipe.getId(), recipe.getType(), recipe.getCuisine(), recipe.getName(), ingredients, steps));
+            }
+
+            return updatedRecipes;
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();

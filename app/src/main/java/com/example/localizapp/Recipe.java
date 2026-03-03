@@ -7,18 +7,16 @@ public class Recipe {
     private String type;
     private String cuisine;
     private MultilingualString name;
-    private MultilingualList ingredients;
-    private MultilingualList steps;
-    private String image;
+    public MultilingualList ingredients;
+    public MultilingualList steps;
 
-    public Recipe(int id, String type, String cuisine, MultilingualString name, MultilingualList ingredients, MultilingualList steps, String image) {
+    public Recipe(int id, String type, String cuisine, MultilingualString name, MultilingualList ingredients, MultilingualList steps) {
         this.id = id;
         this.type = type;
         this.cuisine = cuisine;
         this.name = name;
         this.ingredients = ingredients;
         this.steps = steps;
-        this.image = image;
     }
 
     public int getId() {
@@ -45,15 +43,77 @@ public class Recipe {
         return steps.getByLanguage(languageCode);
     }
 
-    public MultilingualList getIngredients() {
-        return ingredients;
+    public static class MultilingualString {
+        private String ru;
+        private String en;
+        private String de;
+
+        public MultilingualString(String ru, String en, String de) {
+            this.ru = ru;
+            this.en = en;
+            this.de = de;
+        }
+
+        public String getRu() {
+            return ru;
+        }
+
+        public String getEn() {
+            return en;
+        }
+
+        public String getDe() {
+            return de;
+        }
+
+        public String getByLanguage(String languageCode) {
+            switch (languageCode) {
+                case "ru":
+                    return ru;
+                case "en":
+                    return en;
+                case "de":
+                    return de;
+                default:
+                    return en; // Default to English
+            }
+        }
     }
 
-    public MultilingualList getSteps() {
-        return steps;
-    }
+    public static class MultilingualList {
+        private List<String> ru;
+        private List<String> en;
+        private List<String> de;
 
-    public String getImage() {
-        return image;
+        public MultilingualList(List<String> ru, List<String> en, List<String> de) {
+            this.ru = ru;
+            this.en = en;
+            this.de = de;
+        }
+
+        public List<String> getRu() {
+            return ru;
+        }
+
+        public List<String> getEn() {
+            return en;
+        }
+
+        public List<String> getDe() {
+            return de;
+        }
+
+        public List<String> getByLanguage(String languageCode) {
+            switch (languageCode) {
+                case "ru":
+                    return ru;
+                case "en":
+                    return en;
+                case "de":
+                    return de;
+                default:
+                    return en; // Default to English
+            }
+        }
     }
 }

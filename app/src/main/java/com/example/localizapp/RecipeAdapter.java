@@ -13,10 +13,18 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     private Context context;
     private List<Recipe> recipeList;
+    private OnItemClickListener mListener;
+
 
     public RecipeAdapter(Context context, List<Recipe> recipeList) {
         this.context = context;
         this.recipeList = recipeList;
+    }
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
     }
 
     @NonNull
@@ -33,7 +41,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
         holder.recipeNameTextView.setText(recipe.getName().getByLanguage(languageCode));
 
-        // Отображение ингредиентов
         List<String> ingredients = recipe.getIngredientsByLanguage(languageCode);
         StringBuilder ingredientsText = new StringBuilder();
         for (String ingredient : ingredients) {
@@ -41,7 +48,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         }
         holder.recipeIngredientsTextView.setText(ingredientsText.toString());
 
-        // Отображение шагов
         List<String> steps = recipe.getStepsByLanguage(languageCode);
         StringBuilder stepsText = new StringBuilder();
         for (String step : steps) {
@@ -55,7 +61,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         return recipeList.size();
     }
 
-    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
+    public class RecipeViewHolder extends RecyclerView.ViewHolder {
         TextView recipeNameTextView;
         TextView recipeIngredientsTextView;
         TextView recipeStepsTextView;
@@ -65,6 +71,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             recipeNameTextView = itemView.findViewById(R.id.recipeNameTextView);
             recipeIngredientsTextView = itemView.findViewById(R.id.recipeIngredientsTextView);
             recipeStepsTextView = itemView.findViewById(R.id.recipeStepsTextView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

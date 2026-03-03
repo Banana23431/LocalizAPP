@@ -8,4 +8,13 @@
     <string name="filter_breakfast">Frühstück</string>
     <string name="filter_lunch">Mittagessen</string>
     <string name="filter_dinner">Abendessen</string>
+    <string name="btn_back">Zurück</string>
+    <string name="btn_play_audio">Play</string>
+    <string name="btn_pause_audio">Pause</string>
+    <string name="btn_stop_audio">Stop</string>
+    <string name="btn_play_video">Play</string>
+    <string name="btn_pause_video">Pause</string>
+    <string name="btn_stop_video">Stop</string>
+    <string name="textAudio">Audio anhören</string>
+    <string name="textVideo">Sehen Sie sich das Video an</string>
 </resources>

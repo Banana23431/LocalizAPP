@@ -7,4 +7,13 @@
     <string name="filter_breakfast">Breakfast</string>
     <string name="filter_lunch">Lunch</string>
     <string name="filter_dinner">Dinner</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_play_audio">Play</string>
+    <string name="btn_pause_audio">Pause</string>
+    <string name="btn_stop_audio">Stop</string>
+    <string name="btn_play_video">Play</string>
+    <string name="btn_pause_video">Pause</string>
+    <string name="btn_stop_video">Stop</string>
+    <string name="textAudio">Listen to audio</string>
+    <string name="textVideo">Watch the video</string>
 </resources>
