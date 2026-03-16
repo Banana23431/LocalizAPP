@@ -1,113 +1,274 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@color/colorPrimary"
-        android:text="Back"
-        android:textColor="#ffffff" />
-
-    <TextView
-        android:id="@+id/recipeNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Recipe Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-    <TextView
-        android:id="@+id/recipeIngredientsTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ingredients" />
-    <TextView
-        android:id="@+id/recipeStepsTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Steps" />
-
-    <TextView
-        android:id="@+id/textAudio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Прослушать аудио"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <Button
-        android:id="@+id/playButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@color/colorPrimary"
-        android:text="Play"
-            android:onClick="onPlayClick"/>
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimary"
+            android:text="Back"
+            android:textColor="#ffffff" />
 
-        <Button
-        android:id="@+id/pauseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@color/colorPrimary"
-        android:text="Pause"
-            android:onClick="onPauseClick"/>
+        <TextView
+            android:id="@+id/recipeNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recipe Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
+        <TextView
+            android:id="@+id/recipeIngredientsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingredients" />
+
+        <TextView
+            android:id="@+id/recipeStepsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Steps" />
+
+        <TextView
+            android:id="@+id/textAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Прослушать аудио"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onPlayClick"
+                android:text="Play" />
+
+            <Button
+                android:id="@+id/pauseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onPauseClick"
+                android:text="Pause" />
+
+            <Button
+                android:id="@+id/stopButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onStopClick"
+                android:text="Stop" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Посмотреть видео"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/playVideoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onPlayVideoClick"
+                android:text="Play" />
+
+            <Button
+                android:id="@+id/pauseVideoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onPauseVideoClick"
+                android:text="Pause" />
+
+            <Button
+                android:id="@+id/stopVideoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onStopVideoClick"
+                android:text="Stop" />
+
+        </LinearLayout>
+
+        <!-- Таймер 1 -->
+        <TextView
+            android:id="@+id/timer1Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Таймер для запекания:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/timer1TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timer1StartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Старт" />
+
+            <Button
+                android:id="@+id/timer1PauseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Пауза" />
+
+            <Button
+                android:id="@+id/timer1ResetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Сброс" />
+
+        </LinearLayout>
+
+
+        <!-- Таймер 2 -->
+        <TextView
+            android:id="@+id/timer3Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Таймер для украшения:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        <TextView
+            android:id="@+id/timer3TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/timer3StartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Старт"/>
+            <Button
+                android:id="@+id/timer3PauseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Пауза"/>
+            <Button
+                android:id="@+id/timer3ResetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Сброс"/>
+        </LinearLayout>
+
+        <!-- Таймер 3 (с возможностью корректировки времени) -->
+        <TextView
+            android:id="@+id/timer2Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Таймер для остывания:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/timer2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <EditText
+            android:id="@+id/timer2EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите время в минутах" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timer2StartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Старт" />
+
+            <Button
+                android:id="@+id/timer2PauseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Пауза" />
+
+            <Button
+                android:id="@+id/timer2ResetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Сброс" />
+
+
+        </LinearLayout>
         <Button
-        android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@color/colorPrimary"
-        android:text="Stop"
-            android:onClick="onStopClick"/>
+            android:id="@+id/timer2SetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimary"
+            android:text="Установить" />
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/textVideo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Посмотреть видео"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/playVideoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:text="Play"
-            android:onClick="onPlayVideoClick"/>
-
-        <Button
-            android:id="@+id/pauseVideoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:text="Pause"
-            android:onClick="onPauseVideoClick"/>
-
-        <Button
-            android:id="@+id/stopVideoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:text="Stop"
-            android:onClick="onStopVideoClick"/>
-
-    </LinearLayout>
-</LinearLayout>
+</ScrollView>
